@@ -290,6 +290,7 @@ df1.loc[df1.walls == 1., 'Kd'] = 0.
 df1.loc[df1.walls == 0., 'Kd'] = 1.0
 dfList = df1['Kd'].tolist()
 Kd = np.array(dfList)
+
 # Add Kd to rmg
 rmg.add_field('node', 'Kd', Kd)
 

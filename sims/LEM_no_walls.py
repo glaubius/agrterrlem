@@ -373,13 +373,11 @@ def run_LEM(years):
     print("Mean Elevation Lowering over %d years is %f meters per year." % (years, meanElevLowering))
 
     # Plot profile of entire landscape initial and Final
-    plot_1D_2lines(rmg, 'initial_topographic__elevation','topographic__elevation', (2, 2), (45, 45), "Initial and Final Topography")
-    save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (45, 45), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_yearEntire%d" % (i))
+    #save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (45, 45), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_yearEntire%d" % (i))
 
     # Plot profile of detail of landscape initial and Final
-    plot_1D_2lines(rmg, 'initial_topographic__elevation','topographic__elevation', (2, 2), (9, 9), "Initial and Final Topography")
-    save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (9, 9), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_year%d" % (i))
+    #save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (9, 9), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_year%d" % (i))
 
 
-### SIMULATE 
+### SIMULATE
 run_LEM(100)
