@@ -38,12 +38,10 @@ from landlab.io import read_esri_ascii
 from landlab.components import LinearDiffuser
 from landlab.components import FlowRouter
 from landlab.components import StreamPowerEroder
-from landlab.components import PrecipitationDistribution
 
 # Import components for plotting
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import figure, show, plot, xlabel, ylabel, title, subplot
-import numpy as np
 from landlab.plot import imshow_grid
 
 # Add random numbers
@@ -356,7 +354,8 @@ def run_LEM(years):
         # profile plot every 5 steps/years to show changing landscape:
         if i % 5 == 0:
             print(i)
-            save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (9, 9), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_year%d" % (i))
+            ## Turn on the line below to save plots to file
+            #save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (9, 9), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_year%d" % (i))
 
 
     # Calculate and output mean annual rainfall (m)
@@ -382,5 +381,5 @@ def run_LEM(years):
     save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (9, 9), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_year%d" % (i))
 
 
-### SIMULATE
+### SIMULATE 
 run_LEM(100)
