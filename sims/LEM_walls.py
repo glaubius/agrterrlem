@@ -354,7 +354,7 @@ sp = StreamPowerEroder(rmg, K_sp=K_sp, m_sp=m_sp, n_sp=n_sp, threshold_sp=0, use
 # number of years provided
 # Discharge based on rainfall from lines 154-158 of
 # https://github.com/landlab/landlab/blob/master/landlab/components/stream_power/stream_power.py
-def run_LEM(years):
+def run_LEM(years, saveFlag=False):
     # Create list for saving rainfall
     rainOutput = []
     for i in range(years):
@@ -386,8 +386,9 @@ def run_LEM(years):
         # profile plot every 5 steps/years to show changing landscape:
         if i % 5 == 0:
             print(i)
-            ## Turn on the line below to save plots to file
-            #save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (9, 9), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_year%d" % (i))
+            if saveFlag == True:
+                ## Turn on the line below to save plots to file
+                save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (9, 9), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_year%d" % (i))
 
 
     # Calculate and output mean annual rainfall (m)
@@ -404,12 +405,13 @@ def run_LEM(years):
     print("Average difference in elevation between initial and final topography is %f m." % (aveTopoDiff))
     print("Mean Elevation Lowering over %d years is %f meters per year." % (years, meanElevLowering))
 
-    # Plot profile of entire landscape initial and Final
-    #save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (45, 45), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_yearEntire%d" % (i))
+    if saveFlag == True:
+        # Plot profile of entire landscape initial and Final
+        save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (45, 45), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_yearEntire%d" % (i))
 
-    # Plot profile of detail of landscape initial and Final
-    #save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (9, 9), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_year%d" % (i))
+        # Plot profile of detail of landscape initial and Final
+        save_1D_2lines(rmg, 'initial_topographic__elevation', 'topographic__elevation', (2, 2), (9, 9), "Initial and Final Topography - Year %d" % (i), '.', "profile_plot_year%d" % (i))
 
 
 ### SIMULATE
-run_LEM(100)
+run_LEM(100, True)
