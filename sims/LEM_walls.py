@@ -249,6 +249,7 @@ from landlab.io import read_esri_ascii
 from landlab.components import LinearDiffuser
 from landlab.components import FlowRouter
 from landlab.components import StreamPowerEroder
+from landlab.grid.mappers import map_value_at_max_node_to_link
 
 # Import components for plotting
 import matplotlib.pyplot as plt
