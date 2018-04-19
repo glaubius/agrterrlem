@@ -273,6 +273,9 @@ rmg = RasterModelGrid((50, 50), 1.)
 rmg.axis_units = ('m', 'm')
 # Add slope and random noise to topography
 init_topo = ((200 - rmg.node_x) * 0.03) + 100. + np.random.normal(0, 0.005, 2500)
+# Create field for terrace wall locations
+terrWallLoc = np.zeros(2500)
+
 # Add terraces every 5 meters
 for i in range(5, 90, 5):
     terr_loc = np.where((rmg.node_x + rmg.node_y) <= i)
