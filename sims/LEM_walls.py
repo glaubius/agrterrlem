@@ -243,6 +243,7 @@ def save_1D_2lines(rmg,
 
 # Import numpy, Landlab components, etc. for running the model
 import numpy as np
+import pandas as pd
 from landlab import RasterModelGrid
 from landlab.io import read_esri_ascii
 from landlab.components import LinearDiffuser
@@ -302,7 +303,7 @@ df = pd.Series(data=np.array(rmg.at_node['terrace_wall__location']), name="walls
 df1 = df.to_frame(name="walls")
 df1['Kd'] = '0'
 df1.loc[df1.walls == 1., 'Kd'] = 0.
-df1.loc[df1.walls == 0., 'Kd'] = 1.0
+df1.loc[df1.walls == 0., 'Kd'] = K_hs
 dfList = df1['Kd'].tolist()
 Kd = np.array(dfList)
 
@@ -319,7 +320,7 @@ df = pd.Series(data=np.array(rmg.at_node['terrace_wall__location']), name="walls
 df1 = df.to_frame(name="walls")
 df1['Ksp'] = '0'
 df1.loc[df1.walls == 1., 'Ksp'] = 0.
-df1.loc[df1.walls == 0., 'Ksp'] = 0.00001
+df1.loc[df1.walls == 0., 'Ksp'] = K_sp
 dfList = df1['Ksp'].tolist()
 Ksp = np.array(dfList)
 
