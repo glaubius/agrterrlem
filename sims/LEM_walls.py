@@ -277,6 +277,9 @@ init_topo = ((200 - rmg.node_x) * 0.03) + 100. + np.random.normal(0, 0.005, 2500
 for i in range(5, 90, 5):
     terr_loc = np.where((rmg.node_x + rmg.node_y) <= i)
     init_topo[terr_loc] += 2.0
+    # add terrace wall location to field
+    terrwallloc = np.where((rmg.node_x) == i)
+    terrWallLoc[terrwallloc] += 1.
 
 # Add initial topography to raster model grid for later plotting
 rmg.add_field('node', 'initial_topographic__elevation', init_topo, noclobber=True)
@@ -286,6 +289,9 @@ z = copy.deepcopy(init_topo)
 
 # Add elevation for topography to raster model grid
 rmg.add_field('node', 'topographic__elevation', z, noclobber=False)
+
+# Add terrace wall location field to rmg
+rmg.add_field('node', 'terrace_wall__location', terrWallLoc)
 
 # Set the boundary conditions: all NODATA nodes in the DEM are closed
 # boundaries, and the outlet is set to an open boundary.
