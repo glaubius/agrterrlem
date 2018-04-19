@@ -414,4 +414,4 @@ def run_LEM(years, saveFlag=False):
 
 
 ### SIMULATE
-run_LEM(100, True)
+run_LEM(100, False)
